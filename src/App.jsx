@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
@@ -15,12 +14,15 @@ function App() {
         <ContextProvider>
             <BrowserRouter>
               <Navbar/>
-                <Routes>
-                  <Route path={routes.home} element={<Home />} />
-                  <Route path={routes.contact}element={<Contact />} />
-                  <Route path={routes.detail} element={<Detail/>}/>
-                  <Route path={routes.favs} element={<Favs />} />
-                </Routes>
+                <main>
+                  <Routes>
+                    <Route path={routes.home} element={<Home />} />
+                    <Route path={routes.contact}element={<Contact />} />
+                    <Route path={routes.detail} element={<Detail/>}/>
+                    <Route path={routes.favs} element={<Favs />} />
+                    <Route path="*" element={<h1>404 Not Found</h1>} />
+                  </Routes>
+                </main>
               <Footer/>
             </BrowserRouter>
           </ContextProvider>

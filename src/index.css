@@ -5,8 +5,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+button{
+  cursor: pointer;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -17,17 +32,25 @@ code {
   border: none;
   width: 100%;
   cursor: pointer;
+  border: 0.2px solid black;
+}
+.favButton:hover{
+  background-color:rgba(126, 126, 126, 0.6); ;
 }
 
 h1{
   text-align: center;
+  margin-top: 0;
 }
 
 nav{
   display: flex;
-  width: 80vw;
   justify-content: flex-start;
   padding: 1rem;
+}
+
+nav button{
+  border-radius: 2rem;
 }
 
 a{
@@ -45,17 +68,13 @@ footer {
   justify-content: center;
   text-align: center;
   padding: 2rem;
-  position: relative;
-  bottom: 0;
-  width: 90%;
-  height: 40px;
-  margin-top: 2rem;
 }
 
 footer > img{
   width: 200px;
   margin: 0;
 }
+
 footer > p{
   margin: 0;
   padding-top: 0.7rem;
@@ -66,8 +85,16 @@ form{
   flex-direction: column;
   justify-content: space-around;
   width: 300px;
-  height: 100px;
+  padding: 2rem;
   margin: 0 auto;
+}
+
+form button, form input{
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+form button{
+  margin-top: 1rem;
 }
 
 .card{
@@ -76,12 +103,22 @@ form{
   flex-direction: column;
   align-items: center;
   width: 200px;
+  height: 227px;
+  text-align: center;
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
+  background-color: #ffff;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.formPadding{
+  padding: 6.5rem;
 }
 
 .card:hover{
-  border: 0.5px solid rgb(206, 217, 142);
+  border: 1.2px solid rgb(3, 8, 164);
 }
 
 .card-grid{
@@ -92,21 +129,24 @@ form{
   height: auto;
   flex-wrap: wrap;
   margin: 0 auto;
+  padding: 0.7rem;
 }
 
 table {
- border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    display: table;
-    border: 1px solid #ccc;
-
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
+  border: 1px solid #ccc;
 }
-
+.tableContainer{
+  padding: 11.3rem;
+}
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  color: #000;
 }
 
 tr:nth-child(even) {
@@ -120,3 +160,4 @@ tr:nth-child(even) {
 .dark > a {
   color: white;
 }
+
