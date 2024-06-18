@@ -15,7 +15,7 @@ const Favs = () => {
 
   useEffect(() => {
     getFromLocalStorage();
-  }, [favs]);
+  }, [state.favs]);
 
   return (
     <div className={state.theme}>
