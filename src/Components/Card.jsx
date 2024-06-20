@@ -28,8 +28,6 @@ const Card = ({ dentist }) => {
     <div className="card jello-horizontal">
       <Link style={{ margin: 0 }} to={`/dentista/${dentist.id}`}>
         <p style={{ color: 'black', textDecoration: 'underline' }}>{dentist.name} - {dentist.username}</p>
-      </Link>
-      <Link style={{ margin: 0 }} to={`/dentista/${dentist.id}`}>
         <p style={{ margin: 0, color: 'rgb(126, 126, 126)' }}>Details</p>
       </Link>
       <button onClick={handleFavoriteClick} className="favButton">

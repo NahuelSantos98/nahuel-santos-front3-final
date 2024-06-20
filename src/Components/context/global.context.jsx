@@ -15,6 +15,8 @@ function reducer(state, action) {
       return { ...state, favs: action.payload };
     case 'DELETE_FAV':
       return { ...state, favs: action.payload };
+    case 'CLEAN_FAV':
+      return {...state, favs: action.payload}
     default:
       throw new Error();
   }
@@ -51,10 +53,16 @@ export const ContextProvider = ({ children }) => {
     const updatedFavs = state.favs.filter(fav => fav.id !== item.id);
     localStorage.setItem('favorites', JSON.stringify(updatedFavs));
     dispatch({ type: 'DELETE_FAV', payload: updatedFavs });
-  };
+  }; 
+
+  const deleteWholeFavorites = ()=>{
+    const updatedFavs = [];
+    localStorage.setItem('favorites', JSON.stringify(updatedFavs))
+    dispatch({type: 'CLEAN_FAV', payload: updatedFavs})
+  }
 
   return (
-    <ContextGlobal.Provider value={{ state, dispatch, changeTheme, addFavorites, deleteFavorites }}>
+    <ContextGlobal.Provider value={{ state, dispatch, changeTheme, addFavorites, deleteFavorites, deleteWholeFavorites }}>
       {children}
     </ContextGlobal.Provider>
   );

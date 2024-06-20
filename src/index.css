@@ -160,3 +160,6 @@ tr:nth-child(even) {
 .dark > a {
   color: white;
 }
+.padding{
+  padding: 6.1rem 0 ;
+}
