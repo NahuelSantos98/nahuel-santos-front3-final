@@ -16,7 +16,7 @@ function reducer(state, action) {
     case 'DELETE_FAV':
       return { ...state, favs: action.payload };
     case 'CLEAN_FAV':
-      return {...state, favs: action.payload}
+      return { ...state, favs: [] };
     default:
       throw new Error();
   }
@@ -33,6 +33,7 @@ export const ContextProvider = ({ children }) => {
     axios(url)
       .then(res => dispatch({ type: 'GET_DENTIST', payload: res.data }))
       .catch(err => console.error(err));
+
   }, []);
 
   const changeTheme = () => {
@@ -40,6 +41,13 @@ export const ContextProvider = ({ children }) => {
       dispatch({ type: 'LIGHT_MODE' });
     } else {
       dispatch({ type: 'DARK_MODE' });
+    }
+  };
+
+  const getFromLocalStorage = () => {
+    const storedFavs = localStorage.getItem('favorites');
+    if (storedFavs) {
+      return JSON.parse(storedFavs);
     }
   };
 
@@ -55,14 +63,13 @@ export const ContextProvider = ({ children }) => {
     dispatch({ type: 'DELETE_FAV', payload: updatedFavs });
   }; 
 
-  const deleteWholeFavorites = ()=>{
-    const updatedFavs = [];
-    localStorage.setItem('favorites', JSON.stringify(updatedFavs))
-    dispatch({type: 'CLEAN_FAV', payload: updatedFavs})
-  }
+  const deleteWholeFavorites = () => {
+    localStorage.removeItem('favorites');
+    dispatch({ type: 'CLEAN_FAV'});
+  };
 
   return (
-    <ContextGlobal.Provider value={{ state, dispatch, changeTheme, addFavorites, deleteFavorites, deleteWholeFavorites }}>
+    <ContextGlobal.Provider value={{ state, dispatch, changeTheme, addFavorites, deleteFavorites, deleteWholeFavorites, getFromLocalStorage }}>
       {children}
     </ContextGlobal.Provider>
   );
