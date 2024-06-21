@@ -48,6 +48,8 @@ export const ContextProvider = ({ children }) => {
     const storedFavs = localStorage.getItem('favorites');
     if (storedFavs) {
       return JSON.parse(storedFavs);
+    }else {
+      return [];
     }
   };
 
